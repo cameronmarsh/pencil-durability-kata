@@ -13,6 +13,13 @@ public class Paper {
     }
 
 
+    public void append(Character character){
+        if(character != null){
+            print.append(character);
+        }
+    }
+
+
     public String read() {
         return print.toString();
     }

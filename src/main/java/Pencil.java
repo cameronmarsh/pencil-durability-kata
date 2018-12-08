@@ -24,10 +24,14 @@ public class Pencil {
             return;
         }
 
-        paper.append(text);
-
         for (int i = 0; i < text.length(); i++) {
+            if(durability <= 0){
+                paper.append(' ');
+                continue;
+            }
+
             char currChar = text.charAt(i);
+            paper.append(currChar);
             if (currChar >= 65 && currChar <= 90){ //if character is uppercase
                 durability -= 2;
             } else if (currChar > 32 && currChar < 127){

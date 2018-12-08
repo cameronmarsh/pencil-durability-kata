@@ -24,4 +24,13 @@ public class PaperTest {
         paper.append("Hello, world!");
         assertEquals("Hello, world!", paper.read());
     }
+
+
+    @Test
+    public void canAppendCharacterToPage() {
+        paper.append('c');
+        paper.append('a');
+        paper.append('t');
+        assertEquals("cat", paper.read());
+    }
 }

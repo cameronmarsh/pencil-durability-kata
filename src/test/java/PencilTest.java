@@ -76,10 +76,9 @@ public class PencilTest {
     }
 
 
-    //    @Test
-//    public void pencilWritesSpaceWhenPointIsDull() {
-//        Pencil softLeadPencil = new Pencil(paper, 10);
-//        softLeadPencil.write("Hello, world!");
-//        assertEquals("Hello, wor   ", paper.read());
-//    }
+    @Test
+    public void pencilWritesSpaceWhenPointIsDull() {
+        softPencil.write("WOW! Amazing.");
+        assertEquals("WOW! Am      ", paper.read());
+    }
 }
