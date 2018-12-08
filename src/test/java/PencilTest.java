@@ -63,6 +63,19 @@ public class PencilTest {
         assertEquals(187, durablePencil.getDurability());
     }
 
+    @Test
+    public void pencilPointDoesNotDegradeOnWhitespaceChars() {
+        softPencil.write("     \n\n\t\t\t\n      \r        ");
+        assertEquals(10, softPencil.getDurability());
+    }
+
+    @Test
+    public void pencilDegradesByOneWhenPassedNumberOrPunctuation() {
+        softPencil.write("12345!?;");
+        assertEquals(2, softPencil.getDurability());
+    }
+
+
     //    @Test
 //    public void pencilWritesSpaceWhenPointIsDull() {
 //        Pencil softLeadPencil = new Pencil(paper, 10);
