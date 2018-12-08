@@ -45,4 +45,9 @@ public class PencilTest {
         pencil.write(null);
         assertEquals("Winter is coming.", paper.read());
     }
+
+    @Test
+    public void canProvidePointDurabilityToPencilOnInstantiation() {
+        Pencil durablePencil = new Pencil(paper, 200);
+    }
 }
