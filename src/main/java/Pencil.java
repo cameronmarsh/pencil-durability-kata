@@ -1,13 +1,9 @@
 public class Pencil {
+
     private Paper paper;
     private int durability;
     private int pointValue;
     private int length;
-
-
-    public Pencil(Paper paper) {
-        this.paper = paper;
-    }
 
 
     public Pencil(Paper paper, int durability, int length) {
@@ -42,11 +38,6 @@ public class Pencil {
     }
 
 
-    public int getDurability () {
-        return durability;
-    }
-
-
     public int getPointValue() {
         return pointValue;
     }
@@ -62,6 +53,16 @@ public class Pencil {
             pointValue = durability;
             length--;
         }
+    }
+
+
+    public void erase(String text){
+        StringBuilder print = paper.getPrint();
+        int lastInd = print.lastIndexOf(text);
+        for(int i = 0; i < text.length(); i++){
+            print.setCharAt(lastInd + i, ' ');
+        }
+
     }
 
 

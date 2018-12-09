@@ -23,4 +23,9 @@ public class Paper {
     public String read() {
         return print.toString();
     }
+
+
+    public StringBuilder getPrint(){
+        return print;
+    }
 }

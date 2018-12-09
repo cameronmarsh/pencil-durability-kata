@@ -5,11 +5,11 @@ import static org.junit.Assert.assertEquals;
 
 public class PencilTest {
 
-    Pencil defaultPencil;
-    Pencil softPencil;
-    Pencil durablePencil;
-    Pencil reallyShortPencil;
-    Paper paper;
+    private Pencil defaultPencil;
+    private Pencil softPencil;
+    private Pencil durablePencil;
+    private Pencil reallyShortPencil;
+    private Paper paper;
 
 
     @Before
@@ -136,5 +136,13 @@ public class PencilTest {
 
         reallyShortPencil.write("Hello, there. ");
         assertEquals("Hello, there. Hello, there. Hello, there. Hello,        ", paper.read());
+    }
+
+
+    @Test
+    public void pencilCanEraseASingleWord() {
+        defaultPencil.write("yo");
+        defaultPencil.erase("yo");
+        assertEquals("  ", paper.read());
     }
 }
