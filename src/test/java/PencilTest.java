@@ -111,4 +111,19 @@ public class PencilTest {
         reallyLongPencil.sharpen();
         assertEquals(99, reallyLongPencil.getLength());
     }
+
+
+    @Test
+    public void pencilDoesNotSharpenAfterLengthIsZero() {
+        Pencil reallyShortPencil = new Pencil(paper, 20, 2);
+
+        reallyShortPencil.sharpen();
+        reallyShortPencil.sharpen();
+
+        reallyShortPencil.write("I am a short pencil.");
+        reallyShortPencil.sharpen();
+
+        assertEquals(0, reallyShortPencil.getLength());
+        assertEquals(3, reallyShortPencil.getPointValue());
+    }
 }
