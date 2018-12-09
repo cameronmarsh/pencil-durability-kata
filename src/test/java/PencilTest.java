@@ -57,22 +57,25 @@ public class PencilTest {
         Pencil pencilWithDurability = new Pencil(paper, 200);
     }
 
+
     @Test
     public void pencilPointDegradesInValueWhenCharactersAreWritten() {
         durablePencil.write("Hello, world!");
-        assertEquals(187, durablePencil.getDurability());
+        assertEquals(187, durablePencil.getPointValue());
     }
+
 
     @Test
     public void pencilPointDoesNotDegradeOnWhitespaceChars() {
         softPencil.write("     \n\n\t\t\t\n      \r        ");
-        assertEquals(10, softPencil.getDurability());
+        assertEquals(10, softPencil.getPointValue());
     }
+
 
     @Test
     public void pencilDegradesByOneWhenPassedNumberOrPunctuation() {
         softPencil.write("12345!?;");
-        assertEquals(2, softPencil.getDurability());
+        assertEquals(2, softPencil.getPointValue());
     }
 
 
@@ -80,5 +83,14 @@ public class PencilTest {
     public void pencilWritesSpaceWhenPointIsDull() {
         softPencil.write("WOW! Amazing.");
         assertEquals("WOW! Am      ", paper.read());
+    }
+
+
+    @Test
+    public void pencilCanWriteAfterSharpeningDullPoint() {
+        softPencil.write("Hello, world! ");
+        softPencil.sharpen();
+        softPencil.write("Bye, now.");
+        assertEquals("Hello, wor    Bye, now.", paper.read());
     }
 }

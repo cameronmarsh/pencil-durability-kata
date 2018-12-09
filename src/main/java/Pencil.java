@@ -1,6 +1,7 @@
 public class Pencil {
     private Paper paper;
     private int durability;
+    private int pointValue;
 
 
     public Pencil() {
@@ -16,6 +17,7 @@ public class Pencil {
     public Pencil(Paper paper, int durability) {
         this.paper = paper;
         this.durability = durability;
+        this.pointValue = durability;
     }
 
 
@@ -25,7 +27,7 @@ public class Pencil {
         }
 
         for (int i = 0; i < text.length(); i++) {
-            if(durability <= 0){
+            if(pointValue <= 0){
                 paper.append(' ');
                 continue;
             }
@@ -33,10 +35,10 @@ public class Pencil {
             char currChar = text.charAt(i);
             paper.append(currChar);
             if (currChar >= 65 && currChar <= 90){ //if character is uppercase
-                durability -= 2;
+                pointValue -= 2;
             } else if (currChar > 32 && currChar < 127){
                 //if character is not uppercase and not whitespace (i.e. lowercase, number, or punctuation)
-                durability--;
+                pointValue--;
             }
         }
 
@@ -45,5 +47,15 @@ public class Pencil {
 
     public int getDurability () {
         return durability;
+    }
+
+
+    public int getPointValue() {
+        return pointValue;
+    }
+
+
+    public void sharpen() {
+        pointValue = durability;
     }
 }
