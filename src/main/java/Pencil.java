@@ -1,16 +1,18 @@
 public class Pencil {
 
     private Paper paper;
-    private int durability;
+    private int pointDurability;
     private int pointValue;
     private int length;
+    private int eraserIntegrity;
 
 
-    public Pencil(Paper paper, int durability, int length) {
+    public Pencil(Paper paper, int pointDurability, int length, int eraserDurability) {
         this.paper = paper;
-        this.durability = durability;
-        this.pointValue = durability;
+        this.pointDurability = pointDurability;
+        this.pointValue = pointDurability;
         this.length = length;
+        this.eraserIntegrity = eraserDurability;
     }
 
 
@@ -27,14 +29,20 @@ public class Pencil {
 
             char currChar = text.charAt(i);
             paper.append(currChar);
-            if (currChar >= 65 && currChar <= 90){ //if character is uppercase
-                pointValue -= 2;
-            } else if (currChar > 32 && currChar < 127){
-                //if character is not uppercase and not whitespace (i.e. lowercase, number, or punctuation)
-                pointValue--;
-            }
+            pointValue -= getDegredationValue(currChar);
         }
 
+    }
+
+    private int getDegredationValue(char character) {
+        if (character >= 65 && character <= 90){ //if character is uppercase
+            return 2;
+        } else if (character > 32 && character < 127){
+            //if character is not uppercase and not whitespace (i.e. lowercase, number, or punctuation)
+            return 1;
+        }
+
+        return 0;
     }
 
 
@@ -48,9 +56,14 @@ public class Pencil {
     }
 
 
+    public int getEraserIntegrity() {
+        return eraserIntegrity;
+    }
+
+
     public void sharpen() {
         if(length != 0) {
-            pointValue = durability;
+            pointValue = pointDurability;
             length--;
         }
     }
@@ -63,7 +76,10 @@ public class Pencil {
             return;
 
         for(int i = 0; i < text.length(); i++){
-            print.setCharAt(lastInd + i, ' ');
+            if(getDegredationValue(text.charAt(i)) > 0) {
+                print.setCharAt(lastInd + i, ' ');
+                eraserIntegrity--;
+            }
         }
 
     }

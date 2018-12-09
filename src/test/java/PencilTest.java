@@ -15,10 +15,10 @@ public class PencilTest {
     @Before
     public void setUp() {
         paper = new Paper();
-        defaultPencil = new Pencil(paper, 1000, 30);
-        softPencil = new Pencil(paper, 10, 30);
-        durablePencil = new Pencil(paper, 200, 30);
-        reallyShortPencil = new Pencil(paper, 20, 2);
+        defaultPencil = new Pencil(paper, 1000, 30, 100);
+        softPencil = new Pencil(paper, 10, 30, 100);
+        durablePencil = new Pencil(paper, 200, 30, 100);
+        reallyShortPencil = new Pencil(paper, 20, 2, 5);
     }
 
     
@@ -56,7 +56,7 @@ public class PencilTest {
 
     @Test
     public void canProvidePointDurabilityToPencilOnInstantiation() {
-        Pencil pencilWithDurability = new Pencil(paper, 200, 5);
+        Pencil pencilWithDurability = new Pencil(paper, 200, 5, 3);
     }
 
 
@@ -162,5 +162,16 @@ public class PencilTest {
         defaultPencil.write("Welcome to my dojo.");
         defaultPencil.erase("banana");
         assertEquals("Welcome to my dojo.", paper.read());
+    }
+
+
+    @Test
+    public void eraserDegradesOnNonWhitespaceCharacters() {
+        reallyShortPencil.write("It's a beautiful day!");
+        reallyShortPencil.erase("a");
+        assertEquals("It's a beautiful d y!", paper.read());
+        reallyShortPencil.erase("a");
+        assertEquals("It's a be utiful d y!", paper.read());
+        assertEquals(3, reallyShortPencil.getEraserIntegrity());
     }
 }
