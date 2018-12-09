@@ -14,9 +14,9 @@ public class PencilTest {
     @Before
     public void setUp() {
         paper = new Paper();
-        defaultPencil = new Pencil(paper, 1000);
-        softPencil = new Pencil(paper, 10);
-        durablePencil = new Pencil(paper, 200);
+        defaultPencil = new Pencil(paper, 1000, 30);
+        softPencil = new Pencil(paper, 10, 30);
+        durablePencil = new Pencil(paper, 200, 30);
     }
 
     
@@ -54,7 +54,7 @@ public class PencilTest {
 
     @Test
     public void canProvidePointDurabilityToPencilOnInstantiation() {
-        Pencil pencilWithDurability = new Pencil(paper, 200);
+        Pencil pencilWithDurability = new Pencil(paper, 200, 5);
     }
 
 
@@ -92,5 +92,23 @@ public class PencilTest {
         softPencil.sharpen();
         softPencil.write("Bye, now.");
         assertEquals("Hello, wor    Bye, now.", paper.read());
+    }
+
+
+    @Test
+    public void pencilRestoresPointValueAfterSharpening() {
+        durablePencil.write("I am getting duller by the character.");
+        assertEquals(168, durablePencil.getPointValue());
+        durablePencil.sharpen();
+        assertEquals(200, durablePencil.getPointValue());
+    }
+
+
+    @Test
+    public void pencilGetsShorterAfterSharpening() {
+        Pencil reallyLongPencil = new Pencil(paper, 50, 100);
+        reallyLongPencil.write("blah blah blah");
+        reallyLongPencil.sharpen();
+        assertEquals(99, reallyLongPencil.getLength());
     }
 }

@@ -2,11 +2,7 @@ public class Pencil {
     private Paper paper;
     private int durability;
     private int pointValue;
-
-
-    public Pencil() {
-
-    }
+    private int length;
 
 
     public Pencil(Paper paper) {
@@ -14,10 +10,11 @@ public class Pencil {
     }
 
 
-    public Pencil(Paper paper, int durability) {
+    public Pencil(Paper paper, int durability, int length) {
         this.paper = paper;
         this.durability = durability;
         this.pointValue = durability;
+        this.length = length;
     }
 
 
@@ -55,7 +52,15 @@ public class Pencil {
     }
 
 
+    public int getLength() {
+        return length;
+    }
+
+
     public void sharpen() {
         pointValue = durability;
+        length--;
     }
+
+
 }
