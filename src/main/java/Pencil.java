@@ -71,12 +71,14 @@ public class Pencil {
 
     public void erase(String text){
         StringBuilder print = paper.getPrint();
+
         int lastInd = print.lastIndexOf(text);
-        if(lastInd == -1)
+        if(lastInd == -1) {
             return;
+        }
 
         for(int i = 0; i < text.length(); i++){
-            if(getDegredationValue(text.charAt(i)) > 0) {
+            if(getDegredationValue(text.charAt(i)) > 0 && eraserIntegrity > 0) {
                 print.setCharAt(lastInd + i, ' ');
                 eraserIntegrity--;
             }

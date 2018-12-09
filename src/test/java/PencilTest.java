@@ -174,4 +174,16 @@ public class PencilTest {
         assertEquals("It's a be utiful d y!", paper.read());
         assertEquals(3, reallyShortPencil.getEraserIntegrity());
     }
+
+
+    @Test
+    public void pencilDoesNotEraseWhenEraserValueIsZero() {
+        reallyShortPencil.write("What's up dog?!!!");
+        reallyShortPencil.erase("'s");
+        reallyShortPencil.erase("?");
+        reallyShortPencil.erase("!!");
+        assertEquals(0, reallyShortPencil.getEraserIntegrity());
+        reallyShortPencil.erase("dog");
+        assertEquals("What   up dog !  ", paper.read());
+    }
 }
