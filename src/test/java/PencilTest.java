@@ -155,4 +155,12 @@ public class PencilTest {
         defaultPencil.erase("how");
         assertEquals("S    me     you do that.", paper.read());
     }
+
+
+    @Test
+    public void pencilDoesNothingWhenTryingToEraseNonexistentWord() {
+        defaultPencil.write("Welcome to my dojo.");
+        defaultPencil.erase("banana");
+        assertEquals("Welcome to my dojo.", paper.read());
+    }
 }
