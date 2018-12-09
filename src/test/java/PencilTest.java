@@ -186,4 +186,13 @@ public class PencilTest {
         reallyShortPencil.erase("dog");
         assertEquals("What   up dog !  ", paper.read());
     }
+
+
+    @Test
+    public void pencilErasesTextOppositeOfHowItWasWritten() {
+        reallyShortPencil.write("Khruangbin rox");
+        reallyShortPencil.erase("Khruangbin");
+        assertEquals("Khrua      rox", paper.read());
+
+    }
 }

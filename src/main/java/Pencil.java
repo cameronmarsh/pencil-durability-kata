@@ -73,12 +73,16 @@ public class Pencil {
         StringBuilder print = paper.getPrint();
 
         int lastInd = print.lastIndexOf(text);
-        if(lastInd == -1) {
+        if(lastInd == -1) { //the string has not been written
             return;
         }
 
-        for(int i = 0; i < text.length(); i++){
-            if(getDegredationValue(text.charAt(i)) > 0 && eraserIntegrity > 0) {
+        for(int i = text.length()-1; i >= 0; i--){
+            if(eraserIntegrity == 0){
+                return;
+            }
+
+            if(getDegredationValue(text.charAt(i)) > 0){
                 print.setCharAt(lastInd + i, ' ');
                 eraserIntegrity--;
             }
