@@ -59,6 +59,7 @@ public class Pencil {
     public void erase(String text){
         StringBuilder print = paper.getPrint();
         int lastInd = print.lastIndexOf(text);
+
         for(int i = 0; i < text.length(); i++){
             print.setCharAt(lastInd + i, ' ');
         }

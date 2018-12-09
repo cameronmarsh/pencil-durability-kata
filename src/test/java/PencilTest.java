@@ -145,4 +145,14 @@ public class PencilTest {
         defaultPencil.erase("yo");
         assertEquals("  ", paper.read());
     }
+
+
+    @Test
+    public void pencilCanEraseSingleWordMultipleTimes() {
+        defaultPencil.write("Show me how you do that.");
+        defaultPencil.erase("how");
+        assertEquals("Show me     you do that.", paper.read());
+        defaultPencil.erase("how");
+        assertEquals("S    me     you do that.", paper.read());
+    }
 }
