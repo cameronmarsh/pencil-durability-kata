@@ -8,6 +8,7 @@ public class PencilTest {
     Pencil defaultPencil;
     Pencil softPencil;
     Pencil durablePencil;
+    Pencil reallyShortPencil;
     Paper paper;
 
 
@@ -17,6 +18,7 @@ public class PencilTest {
         defaultPencil = new Pencil(paper, 1000, 30);
         softPencil = new Pencil(paper, 10, 30);
         durablePencil = new Pencil(paper, 200, 30);
+        reallyShortPencil = new Pencil(paper, 20, 2);
     }
 
     
@@ -106,17 +108,14 @@ public class PencilTest {
 
     @Test
     public void pencilGetsShorterAfterSharpening() {
-        Pencil reallyLongPencil = new Pencil(paper, 50, 100);
-        reallyLongPencil.write("blah blah blah");
-        reallyLongPencil.sharpen();
-        assertEquals(99, reallyLongPencil.getLength());
+        reallyShortPencil.write("blah blah blah");
+        reallyShortPencil.sharpen();
+        assertEquals(1, reallyShortPencil.getLength());
     }
 
 
     @Test
     public void pencilDoesNotSharpenAfterLengthIsZero() {
-        Pencil reallyShortPencil = new Pencil(paper, 20, 2);
-
         reallyShortPencil.sharpen();
         reallyShortPencil.sharpen();
 
@@ -125,5 +124,17 @@ public class PencilTest {
 
         assertEquals(0, reallyShortPencil.getLength());
         assertEquals(3, reallyShortPencil.getPointValue());
+    }
+
+
+    @Test
+    public void pencilDoesNotWriteAfterLengthIsZeroAndHasADullPoint() {
+        for(int i = 0; i < 3; i++){
+            reallyShortPencil.write("Hello, there. ");
+            reallyShortPencil.sharpen();
+        }
+
+        reallyShortPencil.write("Hello, there. ");
+        assertEquals("Hello, there. Hello, there. Hello, there. Hello,        ", paper.read());
     }
 }
