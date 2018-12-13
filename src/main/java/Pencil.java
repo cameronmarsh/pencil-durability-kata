@@ -116,6 +116,7 @@ public class Pencil {
                 print.append(replacement.substring(i));
                 return;
             }
+
             if(getDegredationValue(print.charAt(index + i)) > 0){ //if the character is not whitespace
                 print.setCharAt(index + i, '@');
             } else {
@@ -134,7 +135,6 @@ public class Pencil {
     }
 
 
-
     public int getLength() {
         return length;
     }
@@ -148,6 +148,7 @@ public class Pencil {
     public Paper getPaper() {
         return paper;
     }
+
 
     public void setPaper(Paper paper) {
         this.paper = paper;
