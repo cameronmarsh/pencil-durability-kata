@@ -92,6 +92,10 @@ public class Pencil {
 
 
     public void edit(String replacement, int index) {
+        if(index < 0 || index >= paper.read().length()){
+            return;
+        }
+
         StringBuilder print = paper.getPrint();
         print.replace(index, index + replacement.length(), replacement);
 

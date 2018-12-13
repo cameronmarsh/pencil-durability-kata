@@ -210,4 +210,12 @@ public class PencilTest {
         defaultPencil.edit("bbb", 5);
         assertEquals("aaaaabbbaaaa", paper.read());
     }
+
+
+    @Test
+    public void pencilDoesNotEditTextWithBadIndex() {
+        defaultPencil.write("123");
+        defaultPencil.edit("4567", 3);
+        assertEquals("123", paper.read());
+    }
 }
