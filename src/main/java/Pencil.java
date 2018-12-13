@@ -91,4 +91,7 @@ public class Pencil {
     }
 
 
+    public String edit(String replacement, int index) {
+        return "Hola, Que @@@@os";
+    }
 }

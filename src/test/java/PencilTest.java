@@ -193,6 +193,12 @@ public class PencilTest {
         reallyShortPencil.write("Khruangbin rox");
         reallyShortPencil.erase("Khruangbin");
         assertEquals("Khrua      rox", paper.read());
+    }
 
+
+    @Test
+    public void pencilCanEditExistingTextGivenIndex() {
+        defaultPencil.write("Hola,     amigos");
+        assertEquals("Hola, Que @@@@os", defaultPencil.edit("Que pasa", 6));
     }
 }
