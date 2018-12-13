@@ -97,7 +97,13 @@ public class Pencil {
         }
 
         StringBuilder print = paper.getPrint();
-        print.replace(index, index + replacement.length(), replacement);
+        for(int i = 0; i < replacement.length(); i++){
+            if(getDegredationValue(print.charAt(index + i)) > 0){
+                print.setCharAt(index + i, '@');
+            } else {
+                print.setCharAt(index + i, replacement.charAt(i));
+            }
+        }
 
     }
 }

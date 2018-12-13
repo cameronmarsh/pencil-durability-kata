@@ -218,4 +218,12 @@ public class PencilTest {
         defaultPencil.edit("4567", 3);
         assertEquals("123", paper.read());
     }
+
+
+    @Test
+    public void pencilReplacesNonWhitespaceCharactersWithAtSymbol() {
+        defaultPencil.write("One ring to rule them all.");
+        defaultPencil.edit("ORANGE", 7);
+        assertEquals("One rin@R@@G@ule them all.", paper.read());
+    }
 }
