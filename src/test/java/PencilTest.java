@@ -234,4 +234,17 @@ public class PencilTest {
         defaultPencil.edit("bicycle?", 12);
         assertEquals("My precious.@@cycle?", paper.read());
     }
+
+
+    //Non-requirement tests
+
+    @Test
+    public void pencilCanChangePaper() {
+          defaultPencil.write("Hahahaha that's so funny!");
+          Paper newSheet = new Paper();
+          defaultPencil.setPaper(newSheet);
+          defaultPencil.write("This is serious.");
+          assertEquals("Hahahaha that's so funny!", paper.read());
+          assertEquals("This is serious.", defaultPencil.getPaper().read());
+    }
 }

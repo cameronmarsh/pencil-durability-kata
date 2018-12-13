@@ -61,6 +61,15 @@ public class Pencil {
     }
 
 
+    public Paper getPaper() {
+        return paper;
+    }
+
+    public void setPaper(Paper paper) {
+        this.paper = paper;
+    }
+
+    
     public void sharpen() {
         if(length != 0) {
             pointValue = pointDurability;
@@ -110,4 +119,7 @@ public class Pencil {
         }
 
     }
+
+
+
 }
