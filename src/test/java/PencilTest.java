@@ -197,8 +197,17 @@ public class PencilTest {
 
 
     @Test
-    public void pencilCanEditExistingTextGivenIndex() {
+    public void pencilCanEditExistingText() {
         defaultPencil.write("Hola,     amigos");
-        assertEquals("Hola, Que @@@@os", defaultPencil.edit("Que pasa", 6));
+        defaultPencil.edit("mis", 6);
+        assertEquals("Hola, mis amigos", paper.read());
+    }
+
+
+    @Test
+    public void pencilCanEditTextAtGivenIndex() {
+        defaultPencil.write("aaaaa   aaaa");
+        defaultPencil.edit("bbb", 5);
+        assertEquals("aaaaabbbaaaa", paper.read());
     }
 }

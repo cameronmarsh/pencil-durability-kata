@@ -91,7 +91,9 @@ public class Pencil {
     }
 
 
-    public String edit(String replacement, int index) {
-        return "Hola, Que @@@@os";
+    public void edit(String replacement, int index) {
+        StringBuilder print = paper.getPrint();
+        print.replace(index, index + replacement.length(), replacement);
+
     }
 }
