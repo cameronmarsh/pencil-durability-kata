@@ -22,12 +22,13 @@ public class Pencil {
         }
 
         for (int i = 0; i < text.length(); i++) {
-            if(pointValue <= 0){
+            char currChar = text.charAt(i);
+
+            if(pointValue <= 0 || pointValue < getDegredationValue(currChar)){
                 paper.append(' ');
                 continue;
             }
 
-            char currChar = text.charAt(i);
             paper.append(currChar);
             pointValue -= getDegredationValue(currChar);
         }

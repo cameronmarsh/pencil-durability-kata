@@ -257,4 +257,11 @@ public class PencilTest {
         defaultPencil.erase("well");
         assertEquals("Well,     ,     . What do we have here?", paper.read());
     }
+
+
+    @Test
+    public void pencilWillNotWriteCapitalLetterWithPointValueOne() {
+        softPencil.write("WWWWaDdup?!?!?");
+        assertEquals("WWWWa d       ", paper.read());
+    }
 }
