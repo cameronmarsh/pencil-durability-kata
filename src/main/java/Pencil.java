@@ -69,7 +69,7 @@ public class Pencil {
         this.paper = paper;
     }
 
-    
+
     public void sharpen() {
         if(length != 0) {
             pointValue = pointDurability;

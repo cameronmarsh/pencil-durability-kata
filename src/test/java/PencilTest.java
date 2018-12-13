@@ -247,4 +247,14 @@ public class PencilTest {
           assertEquals("Hahahaha that's so funny!", paper.read());
           assertEquals("This is serious.", defaultPencil.getPaper().read());
     }
+
+
+    @Test
+    public void pencilEraserIsCaseSensitive() {
+        defaultPencil.write("Well, well, well. What do we have here?");
+        defaultPencil.erase("well");
+        defaultPencil.erase("well");
+        defaultPencil.erase("well");
+        assertEquals("Well,     ,     . What do we have here?", paper.read());
+    }
 }
