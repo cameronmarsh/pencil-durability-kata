@@ -226,4 +226,12 @@ public class PencilTest {
         defaultPencil.edit("ORANGE", 7);
         assertEquals("One rin@R@@G@ule them all.", paper.read());
     }
+
+
+    @Test
+    public void pencilAppendsRestOfReplacementWordIfLongerThanExistingPrint() {
+        defaultPencil.write("My precious...");
+        defaultPencil.edit("bicycle?", 12);
+        assertEquals("My precious.@@cycle?", paper.read());
+    }
 }

@@ -98,7 +98,11 @@ public class Pencil {
 
         StringBuilder print = paper.getPrint();
         for(int i = 0; i < replacement.length(); i++){
-            if(getDegredationValue(print.charAt(index + i)) > 0){
+            if(index + i >= print.length()){ //if there are no characters to replace, append the rest of the string
+                print.append(replacement.substring(i));
+                return;
+            }
+            if(getDegredationValue(print.charAt(index + i)) > 0){ //if the character is not whitespace
                 print.setCharAt(index + i, '@');
             } else {
                 print.setCharAt(index + i, replacement.charAt(i));
