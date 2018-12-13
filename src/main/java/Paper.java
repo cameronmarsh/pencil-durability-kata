@@ -1,3 +1,6 @@
+/**
+ * Class representing a single sheet of paper on which a Pencil object can write text
+ */
 public class Paper {
     private StringBuilder print;
 

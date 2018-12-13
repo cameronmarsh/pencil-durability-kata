@@ -1,3 +1,6 @@
+/**
+ * Class representing a graphite pencil object
+ */
 public class Pencil {
 
     private Paper paper;
@@ -16,6 +19,10 @@ public class Pencil {
     }
 
 
+    /**
+     * Appends the given string to the pencil's current paper
+     * @param text string to append to the paper object
+     */
     public void write(String text) {
         if (paper == null || text == null) {
             return;
@@ -35,6 +42,12 @@ public class Pencil {
 
     }
 
+
+    /**
+     * Calculates the value to degrade a pencil's point after writing the given character.
+     * @param character
+     * @return 2 if character is uppercase, 1 if lowercase or punctuation, 0 if whitespace
+     */
     private int getDegredationValue(char character) {
         if (character >= 65 && character <= 90){ //if character is uppercase
             return 2;
@@ -47,30 +60,10 @@ public class Pencil {
     }
 
 
-    public int getPointValue() {
-        return pointValue;
-    }
 
-
-    public int getLength() {
-        return length;
-    }
-
-
-    public int getEraserIntegrity() {
-        return eraserIntegrity;
-    }
-
-
-    public Paper getPaper() {
-        return paper;
-    }
-
-    public void setPaper(Paper paper) {
-        this.paper = paper;
-    }
-
-
+    /**
+     * Reset the pencil's point value to it's maximum and decrease the pencil's length by a value of one
+     */
     public void sharpen() {
         if(length != 0) {
             pointValue = pointDurability;
@@ -79,6 +72,11 @@ public class Pencil {
     }
 
 
+    /**
+     * Erase the last instance of the given word on the pencil's paper and replace with space characters. Note that the
+     * string must match case.
+     * @param text substring to erase from paper
+     */
     public void erase(String text){
         StringBuilder print = paper.getPrint();
 
@@ -101,6 +99,12 @@ public class Pencil {
     }
 
 
+    /**
+     * Replace part of written page with given string at given location. Adds '@' if overlapping with a non-whitespace
+     * character
+     * @param replacement substring to add in place of existing text
+     * @param index starting place in the paper's text to replace
+     */
     public void edit(String replacement, int index) {
         if(index < 0 || index >= paper.read().length()){
             return;
@@ -120,6 +124,36 @@ public class Pencil {
         }
 
     }
+
+
+
+    //Getter and setter functions
+
+    public int getPointValue() {
+        return pointValue;
+    }
+
+
+
+    public int getLength() {
+        return length;
+    }
+
+
+    public int getEraserIntegrity() {
+        return eraserIntegrity;
+    }
+
+
+    public Paper getPaper() {
+        return paper;
+    }
+
+    public void setPaper(Paper paper) {
+        this.paper = paper;
+    }
+
+
 
 
 
